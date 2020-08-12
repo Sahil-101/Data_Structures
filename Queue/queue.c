@@ -69,6 +69,7 @@ void deQ(int a, Queue queue)
     {
       queue->size--;
       temp0 = i->next;
+      free(i);
       if (temp1 != NULL)
       {
         temp1->next = temp0;
@@ -90,13 +91,13 @@ bool isEmpty(Queue queue)
 {
   assert(queue != NULL);
 
-  if (queue->front == NULL)
+  if (queue->size)
   {
-    return true;
+    return false;
   }
   else
   {
-    return false;
+    return true;
   }
 
   return;
@@ -129,6 +130,7 @@ void freeQ(Queue queue)
     i = temp;
   }
   queue->size = 0;
+  free(queue);
 
   return;
 }

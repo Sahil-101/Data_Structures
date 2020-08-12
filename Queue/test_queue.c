@@ -24,9 +24,9 @@ int main()
   printf("\n");
   test_deQ();
   printf("\n");
-  test_freeQ();
-  printf("\n");
-  
+  // test_freeQ();
+  // printf("\n");
+
   printf("all test case passed YOu are AWESOME!!!\n");
   return 0;
 }
@@ -34,24 +34,25 @@ int main()
 void test_newQ()
 {
   printf("testing newQ()\n");
-  Queue new_Q=newQ();
+  Queue new_Q = newQ();
 
-  
-  assert(new_Q!=NULL);
-  assert(sizeQ(new_Q)==0);
+  assert(new_Q != NULL);
+  assert(sizeQ(new_Q) == 0);
   printf("newQ passed!!\n");
+
+  freeQ(new_Q);
 
   return;
 }
 void test_enQ()
 {
   printf("testing enQ \n");
-  Queue new_Q=newQ();
+  Queue new_Q = newQ();
 
-  enQ(4,new_Q);
-  assert(readQueue(new_Q)==4);
+  enQ(4, new_Q);
+  assert(readQueue(new_Q) == 4);
   enQ(6, new_Q);
-  assert(sizeQ(new_Q)==2);
+  assert(sizeQ(new_Q) == 2);
 
   freeQ(new_Q);
   printf("enQ passed!! \n");
@@ -62,19 +63,19 @@ void test_enQ()
 void test_deQ()
 {
   printf("testing deQ \n");
-  Queue new_Q=newQ();
+  Queue new_Q = newQ();
 
-  enQ(4,new_Q);
+  enQ(4, new_Q);
   enQ(5, new_Q);
   deQ(4, new_Q);
-  assert(readQueue(new_Q)==5);
+  assert(readQueue(new_Q) == 5);
   enQ(6, new_Q);
   enQ(7, new_Q);
   deQ(6, new_Q);
-  assert(sizeQ(new_Q)==2);
+  assert(sizeQ(new_Q) == 2);
   deQ(7, new_Q);
-  assert(sizeQ(new_Q)==1);
-  
+  assert(sizeQ(new_Q) == 1);
+
   freeQ(new_Q);
   printf("deQ passed!! \n");
   return;
@@ -83,24 +84,24 @@ void test_deQ()
 void test_isempty()
 {
   printf("testing isEmpty \n");
-  
-  Queue new_Q =newQ();
-  assert(isEmpty(new_Q)==true);
-  enQ(1,new_Q);
-  assert(isEmpty(new_Q)==false);
+
+  Queue new_Q = newQ();
+  assert(isEmpty(new_Q) == true);
+  enQ(1, new_Q);
+  assert(isEmpty(new_Q) == false);
 
   freeQ(new_Q);
   printf("isEmpty passed\n");
-  
+
   return;
 }
 void test_readQueue()
 {
   printf("testing readQueue \n");
-  Queue new_Q=newQ();
+  Queue new_Q = newQ();
 
-  enQ(1,new_Q);
-  assert(readQueue(new_Q)==1);
+  enQ(1, new_Q);
+  assert(readQueue(new_Q) == 1);
 
   freeQ(new_Q);
   printf("readQueue passed \n");
@@ -108,20 +109,17 @@ void test_readQueue()
   return;
 }
 
-void test_freeQ()
-{
-  Queue new_Q=newQ();
+// void test_freeQ()
+// {
+//   Queue new_Q = newQ();
 
-  enQ(1, new_Q);
-  enQ(2, new_Q);
+//   enQ(1, new_Q);
+//   enQ(2, new_Q);
 
-  freeQ(new_Q);
+//   freeQ(new_Q);
 
-  assert(readQueue(new_Q)==NULL);
-  printf("freeQ passed\n");
+//   assert(isEmpty(new_Q));
+//   printf("freeQ passed\n");
 
-  return;
-}
-
-
-
+//   return;
+// }

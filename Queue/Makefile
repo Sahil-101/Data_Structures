@@ -1,6 +1,8 @@
 .phony:
 	clean
 
+cflags= -Wall -Wmissing-declarations -Wmissing-prototypes -fsanitize=address -fno-omit-frame-pointer
+
 test: queue.o test_queue.o
 	gcc $(cflags) queue.o test_queue.o -g -o test
 
