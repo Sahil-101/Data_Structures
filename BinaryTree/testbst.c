@@ -19,7 +19,7 @@ int main()
     test_deleteDataBST();
     printf("\n");
 
-    printf("All Test Case Passed You are awesome \n");
+    printf("All Test Case Passed You are awesome !!!! \n");
 }
 
 void test_newBST()
@@ -61,17 +61,13 @@ void test_deleteDataBST()
     addDataBst(1,tree);
     addDataBst(0,tree);
     addDataBst(5,tree);
-
     deleteDataBst(2, tree);
-    printf("\n");
     deleteDataBst(3, tree);
-    printf("\n");
     deleteDataBst(1, tree);
-    printf("\n");
     deleteDataBst(0, tree);
-    printf("\n");
     deleteDataBst(5, tree);
-    printf("\n");
+    addDataBst(4,tree);
+    deleteDataBst(4, tree);
 
     return;
     

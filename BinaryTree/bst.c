@@ -34,7 +34,7 @@ BST newBst()
     return new;
 }
 
-//function for this file only to find the new node's right place 
+//function for this file only to find the new node's right place
 //and insert
 static void insertNode(NODE new, NODE head)
 {
@@ -106,33 +106,40 @@ bool isEmptyBst(BST tree)
     return true;
 }
 
-//depth first search 
-static int DFSearch(int data, NODE head)
+//depth first search
+static bool DFSearch(int data, NODE head)
 {
-    printf("Traversing on to %d\n", head->data);
+    //printf("Traversing on to %d\n", head->data);
+    if (head->data == data)
+    {
+        return true;
+    }
+    else if (head->left != NULL)
+    {
+        if (DFSearch(data, head->left))
+        {
+            //printf("found in left of %d\n", head->data);
+            return true;
+        }
+    }
+    if (head->right != NULL)
+    {
+        if ((DFSearch(data, head->right)))
+        {
+            //printf("found in right of %d\n", head->data);
+            return true;
+        }
+    }
 
-    if(data==head->data)
-    {
-        return data;
-    }
-    else if(head->left!=NULL)
-    {
-        DFSearch(data, head->left);
-    }
-    else if(head->right!=NULL)
-    {
-        DFSearch(data, head->right);
-    }
-
-    return 999;
+    return false;
 }
 
 //function to delete data in binary seach tree
 void deleteDataBst(int data, BST bst)
 {
-    //todo   
-    int value=DFSearch(data, bst->head);
-    printf("Data is %d\n", value);
+    //todo
+    int value = DFSearch(data, bst->head);
+    return;
 }
 
 size_t sizeBst(BST tree)
@@ -142,8 +149,9 @@ size_t sizeBst(BST tree)
 //function to free all tree
 void freeBST(BST tree)
 {
-    assert(tree!=NULL);
+    assert(tree != NULL);
 
-    for(NODE i=tree->head; i!=NULL;);
+    for (NODE i = tree->head; i != NULL;)
+        ;
     //todo
 }
