@@ -1,9 +1,9 @@
-
 /* Binary Seacrh tree header file
 Date -  10-09-20
 Made by Sahil */
 
 #include<stdbool.h>
+
 
 //Binary Search tree ADT
 typedef struct bst* BST;
@@ -19,3 +19,9 @@ bool isEmptyBst(BST tree);
 
 //function to delete data in binary seach tree
 void deleteDataBst(int data, BST tree);
+
+//finding size of tree (no. of tree)
+size_t sizeBst(BST tree);
+
+//function to free all tree
+void freeBST(BST tree);

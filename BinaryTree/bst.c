@@ -28,6 +28,7 @@ BST newBst()
     assert(new != 0);
 
     new->head = NULL;
+
     new->size = 0;
 
     return new;
@@ -106,20 +107,43 @@ bool isEmptyBst(BST tree)
 }
 
 //depth first search 
-static NODE DFSearch(int data, NODE head, NODE temp1)
+static int DFSearch(int data, NODE head)
 {
-    NODE temp=head->left, temp1=head;
-    if(temp->data < data)
+    printf("Traversing on to %d\n", head->data);
+
+    if(data==head->data)
     {
-        temp1=temp;
-        temp=temp->right;
-        DFSearch(data, temp, temp1)
+        return data;
     }
-    
-    
+    else if(head->left!=NULL)
+    {
+        DFSearch(data, head->left);
+    }
+    else if(head->right!=NULL)
+    {
+        DFSearch(data, head->right);
+    }
+
+    return 999;
 }
+
 //function to delete data in binary seach tree
 void deleteDataBst(int data, BST bst)
 {
-    
+    //todo   
+    int value=DFSearch(data, bst->head);
+    printf("Data is %d\n", value);
+}
+
+size_t sizeBst(BST tree)
+{
+    return tree->size;
+}
+//function to free all tree
+void freeBST(BST tree)
+{
+    assert(tree!=NULL);
+
+    for(NODE i=tree->head; i!=NULL;);
+    //todo
 }
