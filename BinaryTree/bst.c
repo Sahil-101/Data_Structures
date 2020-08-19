@@ -146,6 +146,33 @@ size_t sizeBst(BST tree)
 {
     return tree->size;
 }
+
+//function to return8 size (for practice);
+static void sizeRecursively(NODE node, int *pointer)
+{
+    if (node != NULL)
+    {
+        // printf("traversing on to %d\n", node->data);
+        (*pointer)++;
+    }
+    else
+    {
+        return *pointer;
+    }
+    sizeRecursively(node->left, pointer);
+    sizeRecursively(node->right, pointer);
+}
+
+int sizeRecursivelyBst(BST tree)
+{
+    int size = 0;
+    int *pointer = &size;
+
+    sizeRecursively(tree->head, pointer);
+
+    return size;
+}
+
 //function to free all tree
 void freeBST(BST tree)
 {
