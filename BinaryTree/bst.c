@@ -173,12 +173,37 @@ int sizeRecursivelyBst(BST tree)
     return size;
 }
 
+
+void static freeNode(NODE node)
+{
+    if(node==NULL)
+    {
+        return;
+    }
+    
+    if(node->left!=NULL)
+    {
+        freeNode(node->left);
+    }
+    if(node->right!=NULL)
+    {
+        freeNode(node->right);
+    }
+    if(node->left==NULL && node->right==NULL)
+    {
+        free(node);
+        return;
+    }
+    free(node);
+
+    return;
+}
+
 //function to free all tree
 void freeBST(BST tree)
 {
     assert(tree != NULL);
+    freeNode(tree->head);
 
-    for (NODE i = tree->head; i != NULL;)
-        ;
-    //todo
+    free(tree);
 }

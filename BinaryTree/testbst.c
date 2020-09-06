@@ -35,6 +35,8 @@ void test_newBST()
     assert(sizeBst(tree) == 0);
     printf("newBst passed !! \n");
 
+    freeBST(tree);
+
     return;
 }
 
@@ -52,6 +54,7 @@ void test_addDataBST()
 
     printf("addDataBST passed!!\n");
 
+    freeBST(tree);
     return;
 }
 
@@ -72,6 +75,7 @@ void test_deleteDataBST()
     addDataBst(4, tree);
     deleteDataBst(4, tree);
 
+    freeBST(tree);
     return;
 }
 
@@ -86,5 +90,7 @@ void test_sizeRecursivelyBst()
 
     assert(sizeBst(tree)==sizeRecursivelyBst(tree));
     printf("sizeRecursivelyBst passed!!\n");
+
+    freeBST(tree);
     return;
 }
