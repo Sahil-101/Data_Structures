@@ -10,6 +10,7 @@ void test_newBST();
 void test_addDataBST();
 void test_deleteDataBST();
 void test_sizeRecursivelyBst();
+void test_countLeaves();
 
 int main()
 {
@@ -21,7 +22,8 @@ int main()
     printf("\n");
     test_sizeRecursivelyBst();
     printf("\n");
-
+    test_countLeaves();
+    printf("\n");
     printf("All Test Case Passed You are awesome !!!! \n");
 }
 
@@ -90,6 +92,26 @@ void test_sizeRecursivelyBst()
 
     assert(sizeBst(tree)==sizeRecursivelyBst(tree));
     printf("sizeRecursivelyBst passed!!\n");
+
+    freeBST(tree);
+    return;
+}
+
+void test_countLeaves()
+{
+    printf("Testing test_countLeaves() \n");
+    BST tree=newBst();
+
+    addDataBst(1, tree);
+    printf("%d\n" ,CountLeaves(tree));
+    addDataBst(2, tree);
+    printf("%d\n" ,CountLeaves(tree));
+    addDataBst(0, tree);
+    printf("%d\n" ,CountLeaves(tree));
+    addDataBst(3, tree);
+    printf("%d\n" ,CountLeaves(tree));
+
+    printf("Test case passed!! \n");
 
     freeBST(tree);
     return;

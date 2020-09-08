@@ -173,6 +173,10 @@ int sizeRecursivelyBst(BST tree)
     return size;
 }
 
+bool BFSdata(BST tree, int data)
+{
+    //todo
+}
 
 void static freeNode(NODE node)
 {
@@ -180,7 +184,7 @@ void static freeNode(NODE node)
     {
         return;
     }
-    
+
     if(node->left!=NULL)
     {
         freeNode(node->left);
@@ -206,4 +210,31 @@ void freeBST(BST tree)
     freeNode(tree->head);
 
     free(tree);
+}
+
+static void count_leaves(NODE node, size_t * size)
+{
+    if(node->left==NULL && node->right==NULL)
+    {
+        (*size)++ ;
+    }
+    else if(node->left!=NULL)
+    {
+        count_leaves(node->left, size);
+    }
+    else if(node->right!=NULL)
+    {
+        count_leaves(node->right, size);
+    }
+    
+}
+
+size_t CountLeaves(BST tree)
+{
+    size_t* size, size_num;
+    size_num = 0 ;
+    size=&size_num;
+    count_leaves(tree->head, size);
+
+    return size_num;
 }

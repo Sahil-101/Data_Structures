@@ -25,3 +25,9 @@ size_t sizeBst(BST tree);
 
 //function to free all tree
 void freeBST(BST tree);
+
+//function to count leaves of a BST
+size_t CountLeaves(BST tree);
+
+//Breadth first search data
+bool BFSdata(BST tree, int data);
