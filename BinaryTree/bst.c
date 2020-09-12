@@ -212,29 +212,31 @@ void freeBST(BST tree)
     free(tree);
 }
 
-static void count_leaves(NODE node, size_t * size)
+static size_t count_leaves(NODE node)
 {
+    size_t size=0;
+    
     if(node->left==NULL && node->right==NULL)
     {
-        (*size)++ ;
+        return ++size;
     }
-    else if(node->left!=NULL)
+    if(node->left!=NULL)
     {
-        count_leaves(node->left, size);
+        size += count_leaves(node->left);
     }
-    else if(node->right!=NULL)
+    if(node->right!=NULL)
     {
-        count_leaves(node->right, size);
+        size += count_leaves(node->right);
     }
-    
+
+    return size;
 }
 
 size_t CountLeaves(BST tree)
 {
     size_t* size, size_num;
     size_num = 0 ;
-    size=&size_num;
-    count_leaves(tree->head, size);
+    size_num=count_leaves(tree->head);
 
     return size_num;
 }

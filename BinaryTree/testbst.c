@@ -102,15 +102,18 @@ void test_countLeaves()
     printf("Testing test_countLeaves() \n");
     BST tree=newBst();
 
-    addDataBst(1, tree);
-    printf("%d\n" ,CountLeaves(tree));
-    addDataBst(2, tree);
-    printf("%d\n" ,CountLeaves(tree));
-    addDataBst(0, tree);
-    printf("%d\n" ,CountLeaves(tree));
-    addDataBst(3, tree);
-    printf("%d\n" ,CountLeaves(tree));
-
+    addDataBst(10, tree);
+    addDataBst(8, tree);
+    addDataBst(9, tree);
+    addDataBst(6, tree);
+    addDataBst(7, tree);
+    addDataBst(5, tree);
+    addDataBst(15, tree);
+    addDataBst(11, tree);
+    addDataBst(20, tree);
+    addDataBst(19, tree);
+    addDataBst(25, tree);
+    assert(CountLeaves(tree)==6);
     printf("Test case passed!! \n");
 
     freeBST(tree);
