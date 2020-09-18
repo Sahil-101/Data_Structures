@@ -1,21 +1,30 @@
-/* ADT Queue main functions */
+/* ADT Queue for BFS in BST */
 /* Made by Sahil */
-/* 3-08-2020 */
+/* 18-09-2020 */
 
 #include "queue.h"
 
 //struct containing data
-typedef struct
+
+typedef struct node *NODE;
+
+struct node
 {
-  int data;
-  struct Node *next;
-} Node;
+    int data;
+    NODE left;
+    NODE right;
+};
+
+typedef struct queue_node{
+  struct node bst_node;
+  struct queue_node* next;
+}Qnode;
 
 //struct for Queue
 typedef struct queue
 {
-  Node *front;
-  Node *rear;
+  Qnode *front;
+  Qnode *rear;
   size_t size;
 } myQueue;
 
@@ -33,18 +42,19 @@ Queue newQ()
 }
 
 //function to enter item into queue
-void enQ(Node node, Queue queue)
+void enQ(Qnode* node, Queue queue)
 {
+  assert(node != NULL);
 
   if (queue->size == 0)
   {
-    queue->front = node_data;
-    queue->rear = node_data;
+    queue->front = node;
+    queue->rear = node;
   }
   else
   {
-    queue->rear->next=node_data;
-    queue->rear = new_node;
+    queue->rear->next=node;
+    queue->rear = node;
   }
   queue->size++;
 
@@ -52,15 +62,15 @@ void enQ(Node node, Queue queue)
 }
 
 //function to delete item from queue
-void deQ(int a, Queue queue)
+void deQ(Qnode* node, Queue queue)
 {
-  Node *temp0 = NULL, *temp1 = NULL;
+  Qnode *temp0 = NULL, *temp1 = NULL;
 
   assert(!(isEmpty(queue)));
 
-  for (Node *i = queue->front; i != NULL; i = i->next)
+  for (Qnode *i = queue->front; i != NULL; i = i->next)
   {
-    if (i->data = a)
+    if (i->bst_node.data = node->bst_node.data);
     {
       queue->size--;
       temp0 = i->next;
@@ -102,7 +112,7 @@ bool isEmpty(Queue queue)
 int readQueue(Queue queue)
 {
   assert(!(isEmpty(queue)));
-  return queue->front->data;
+  return queue->front->bst_node.data;
 }
 
 //function to check size of queue
@@ -117,8 +127,8 @@ void freeQ(Queue queue)
 {
   assert(queue != NULL);
 
-  node *temp = NULL;
-  for (node *i = queue->front; i != NULL;)
+  Qnode *temp = NULL;
+  for (Qnode *i = queue->front; i != NULL;)
   {
     temp = i->next;
     free(i);

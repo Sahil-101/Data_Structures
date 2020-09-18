@@ -24,6 +24,8 @@ int main()
     printf("\n");
     test_countLeaves();
     printf("\n");
+    test_BFS();
+    printf("\n");
     printf("All Test Case Passed You are awesome !!!! \n");
 }
 
@@ -118,4 +120,22 @@ void test_countLeaves()
 
     freeBST(tree);
     return;
+}
+
+void test_BFS()
+{
+    printf("testing BFS ... \n");
+    BST tree = newBst();
+    addDataBst(1, tree);
+    addDataBst(2, tree);
+    addDataBst(0, tree);
+    addDataBst(-2, tree);
+    addDataBst(4, tree);
+    addDataBst(-1, tree);
+    addDataBst(1, tree);
+    addDataBst(0, tree);
+    addDataBst(1, tree);
+    assert(BFSdata(tree, 4));
+    freeBST(tree);
+    printf("BFS Passed!!!!\n");
 }

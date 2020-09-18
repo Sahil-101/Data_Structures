@@ -5,6 +5,7 @@ Made by Sahil */
 #include <stdlib.h>
 #include <assert.h>
 #include "bst.h"
+#include "queue.h"
 
 typedef struct node *NODE;
 
@@ -172,28 +173,51 @@ int sizeRecursivelyBst(BST tree)
 
     return size;
 }
+static bool BFS_node(NODE node, int data)
+{
+    Queue q = newQ();
+    enQ(node, q);
+    do
+    {
+
+        printf("traversing on node %d" ,readQueue(q));
+        if (readQueue(q) == data)
+        {
+            freeQ(q);
+            return true;
+        }
+        if (node->left != NULL)
+        {
+            enQ(node->left, q);
+        }
+        if (node->right != NULL)
+        {
+            enQ(node->right, q);
+        }
+    } while (isEmpty(q));
+}
 
 bool BFSdata(BST tree, int data)
 {
-    //todo
+    return BFS_node(tree->head, data);
 }
 
 void static freeNode(NODE node)
 {
-    if(node==NULL)
+    if (node == NULL)
     {
         return;
     }
 
-    if(node->left!=NULL)
+    if (node->left != NULL)
     {
         freeNode(node->left);
     }
-    if(node->right!=NULL)
+    if (node->right != NULL)
     {
         freeNode(node->right);
     }
-    if(node->left==NULL && node->right==NULL)
+    if (node->left == NULL && node->right == NULL)
     {
         free(node);
         return;
@@ -212,19 +236,20 @@ void freeBST(BST tree)
     free(tree);
 }
 
+//static function for counting leaves
 static size_t count_leaves(NODE node)
 {
-    size_t size=0;
-    
-    if(node->left==NULL && node->right==NULL)
+    size_t size = 0;
+
+    if (node->left == NULL && node->right == NULL)
     {
         return ++size;
     }
-    if(node->left!=NULL)
+    if (node->left != NULL)
     {
         size += count_leaves(node->left);
     }
-    if(node->right!=NULL)
+    if (node->right != NULL)
     {
         size += count_leaves(node->right);
     }
@@ -234,9 +259,9 @@ static size_t count_leaves(NODE node)
 
 size_t CountLeaves(BST tree)
 {
-    size_t* size, size_num;
-    size_num = 0 ;
-    size_num=count_leaves(tree->head);
+    size_t *size, size_num;
+    size_num = 0;
+    size_num = count_leaves(tree->head);
 
     return size_num;
 }
