@@ -10,16 +10,16 @@
 #include<assert.h>
 
 typedef struct queue * Queue;
-typedef struct queue_node Qnode;
+typedef struct node  BST_node;
 
 //function to create new Queue
 Queue newQ();
 
 //function to enter item into queue
-void enQ(Qnode* node, Queue queue);
+void enQ(BST_node* node, Queue queue);
 
 //function to delete item from queue
-void deQ(Qnode* node, Queue queue);
+void deQ(BST_node* node, Queue queue);
 
 //function to check wether queue is empty or not
 bool isEmpty(Queue queue);

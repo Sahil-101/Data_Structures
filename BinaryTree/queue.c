@@ -8,15 +8,15 @@
 
 typedef struct node *NODE;
 
-struct node
+typedef struct node
 {
     int data;
     NODE left;
     NODE right;
-};
+} BST_node;
 
 typedef struct queue_node{
-  struct node bst_node;
+  BST_node* bst_node;
   struct queue_node* next;
 }Qnode;
 
@@ -42,19 +42,23 @@ Queue newQ()
 }
 
 //function to enter item into queue
-void enQ(Qnode* node, Queue queue)
+void enQ(BST_node* node, Queue queue)
 {
   assert(node != NULL);
+  Qnode* newQ_node = malloc(sizeof(Qnode));
+  assert(newQ_node != NULL);
+  newQ_node->bst_node=node;
+  newQ_node->next=NULL;
 
   if (queue->size == 0)
   {
-    queue->front = node;
-    queue->rear = node;
+    queue->front = newQ_node;
+    queue->rear = newQ_node;
   }
   else
   {
-    queue->rear->next=node;
-    queue->rear = node;
+    queue->rear->next=newQ_node;
+    queue->rear = newQ_node;
   }
   queue->size++;
 
@@ -62,7 +66,7 @@ void enQ(Qnode* node, Queue queue)
 }
 
 //function to delete item from queue
-void deQ(Qnode* node, Queue queue)
+void deQ(BST_node* node, Queue queue)
 {
   Qnode *temp0 = NULL, *temp1 = NULL;
 
@@ -70,7 +74,7 @@ void deQ(Qnode* node, Queue queue)
 
   for (Qnode *i = queue->front; i != NULL; i = i->next)
   {
-    if (i->bst_node.data = node->bst_node.data);
+    if (i->bst_node->data = node->data);
     {
       queue->size--;
       temp0 = i->next;
@@ -112,7 +116,7 @@ bool isEmpty(Queue queue)
 int readQueue(Queue queue)
 {
   assert(!(isEmpty(queue)));
-  return queue->front->bst_node.data;
+  return queue->front->bst_node->data;
 }
 
 //function to check size of queue
